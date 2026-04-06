@@ -1,162 +1,235 @@
-/* ===========================
-   Reset y estilos generales
-=========================== */
+/* =========================== ESTILOS GENERALES =========================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    line-height: 1.5;
+html {
+    scroll-behavior: smooth;
 }
 
-/* ===========================
-   MENÚ DE NAVEGACIÓN
-=========================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6dbc9; /* Khaki */
+    color: #2e3830; /* Clean Deep Grey */
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* =========================== MENÚ =========================== */
 .menu {
-    background-color: black;
-    padding: 10px 0;
+    background-color: #2e3830; /* Clean Deep Grey */
+    padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
 .menu a {
-    color: white;
-    margin: 0 15px;
+    color: #e6dbc9; /* Khaki */
+    margin: 0 20px;
     text-decoration: none;
     font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
 .menu a:hover {
-    color: #f4f4f4;
+    color: #c53211; /* Cotton Red */
     text-decoration: underline;
 }
 
-/* SCROLL SUAVE */
-html { scroll-behavior: smooth; }
-
-/* ===========================
-   PERFIL DEL ARTISTA
-=========================== */
+/* =========================== PERFIL ARTISTA =========================== */
 .perfil-artista {
-    padding: 60px 20px;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-    background: #333 url('fondo_perfil.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #2e3830, #3a443c);
+    padding: 60px 40px;
+    color: #e6dbc9; /* Khaki */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    animation: fadeIn 1.5s ease-in;
 }
 
 .perfil-artista img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+    border-radius: 0;
     object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid white;
+    margin-right: 50px;
+    border: 4px solid #c53211; /* Cotton Red */
 }
 
-/* ===========================
-   GALERÍA DE OBRAS
-=========================== */
+.perfil-texto {
+    max-width: 700px;
+    text-align: left;
+}
+
+.perfil-texto h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.perfil-texto p {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50px);}
+    to { opacity: 1; transform: translateX(0);}
+}
+
+/* =========================== GALERÍA =========================== */
 .galeria {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 40px 0;
-    background: #eee url('fondo_galeria.jpg') center/cover no-repeat;
+    gap: 30px;
+    padding: 50px 20px;
 }
 
 .obra {
-    background: white;
-    padding: 15px;
-    width: 250px;
+    position: relative;
+    width: 280px;
     border-radius: 10px;
-    box-shadow: 0 0 10px gray;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    cursor: pointer;
     transition: transform 0.4s, box-shadow 0.4s;
 }
 
+.obra img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
 .obra:hover {
-    transform: scale(1.07) translateY(-5px);
-    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-.obra img { width: 100%; border-radius: 10px; }
-
-.historia {
-    font-size: 0.9em;
-    color: #555;
+.overlay {
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(46,56,48,0.85); /* semi oscuro */
+    color: #e6dbc9;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    transition: opacity 0.4s;
 }
 
-/* ===========================
-   GALERÍA MBOPI
-=========================== */
+.obra:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #c53211;
+}
+
+.overlay p {
+    margin-bottom: 5px;
+}
+
+/* =========================== GALERÍA MBOPI =========================== */
 .mbopi {
-    padding: 40px 20px;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-    background: #444 url('fondo_mbopi.jpg') center/cover no-repeat;
+    background-color: #2e3830; /* Clean Deep Grey */
+    padding: 50px 20px;
+    color: #e6dbc9; /* Khaki */
 }
 
-.mbopi .galeria .obra {
-    border: 2px dashed #555;
+.mbopi h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
 }
 
-/* ===========================
-   BOTÓN FLOTANTE
-=========================== */
+/* =========================== BOTÓN FLOTANTE =========================== */
 .boton-flotante {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: black;
-    color: white;
+    background-color: #2e3830; /* Clean Deep Grey */
+    color: #e6dbc9; /* Khaki */
     border: none;
     padding: 15px;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
     z-index: 100;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
 }
 
-/* ===========================
-   FORMULARIO FLOTANTE
-=========================== */
+.boton-flotante:hover {
+    background-color: #c53211; /* Cotton Red */
+    transform: translateY(-5px);
+}
+
+/* =========================== FORMULARIO FLOTANTE =========================== */
 .subir-obra {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 300px;
+    width: 320px;
     max-width: 90%;
-    background: rgba(255,255,255,0.95);
+    background: rgba(230,219,201,0.95); /* Khaki semitransparente */
     padding: 20px;
     border-radius: 10px;
     box-shadow: -5px -5px 15px rgba(0,0,0,0.2);
     font-size: 0.9em;
     z-index: 101;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
 }
 
-.subir-obra label { margin: 10px 0 5px; text-align: left; }
+.subir-obra label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
 
-.subir-obra input,
-.subir-obra textarea { width: 100%; padding: 6px; border-radius: 5px; border: 1px solid #ccc; }
+.subir-obra input, 
+.subir-obra textarea {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9em;
+}
 
 .subir-obra button[type="submit"] {
-    margin-top: 10px; background-color: black; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer;
+    margin-top: 10px;
+    background-color: #2e3830;
+    color: #e6dbc9;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.subir-obra button[type="submit"]:hover { background-color: #333; }
+.subir-obra button[type="submit"]:hover {
+    background-color: #c53211;
+}
 
-/* BOTÓN CERRAR */
-.cerrar { position: absolute; top: 5px; right: 10px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #333; }
+.cerrar {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+}
 
-/* CLASE OCULTO */
-.oculto { display: none; }
+.oculto {
+    display: none;
+}
