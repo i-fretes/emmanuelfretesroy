@@ -1,0 +1,210 @@
+/* ===========================
+   Estilos generales
+=========================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* ===========================
+   MENÚ DE NAVEGACIÓN
+=========================== */
+.menu {
+    background-color: black;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #f4f4f4;
+    text-decoration: underline;
+}
+
+/* ===========================
+   SCROLL SUAVE
+=========================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===========================
+   PERFIL DEL ARTISTA
+=========================== */
+.perfil-artista {
+    position: relative;
+    background-image: url('imagenes/fondo_perfil.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.perfil-artista img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid white;
+}
+
+/* ===========================
+   GALERÍA DE OBRAS
+=========================== */
+.galeria {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+    background-image: url('imagenes/fondo_galeria.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.obra {
+    background: white;
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.obra:hover {
+    transform: scale(1.07) translateY(-5px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.obra img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.historia {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* ===========================
+   GALERÍA MBOPI
+=========================== */
+.mbopi {
+    position: relative;
+    background-image: url('imagenes/fondo_mbopi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 20px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+.mbopi .galeria .obra {
+    border: 2px dashed #555;
+}
+
+/* ===========================
+   BOTÓN FLOTANTE
+=========================== */
+.boton-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   FORMULARIO FLOTANTE
+=========================== */
+.subir-obra {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-width: 90%;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px rgba(0,0,0,0.2);
+    font-size: 0.9em;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+}
+
+.subir-obra label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.subir-obra input, 
+.subir-obra textarea {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9em;
+}
+
+.subir-obra button[type="submit"] {
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subir-obra button[type="submit"]:hover {
+    background-color: #333;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* CLASE PARA OCULTAR */
+.oculto {
+    display: none;
+}
