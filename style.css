@@ -1,5 +1,5 @@
 /* ===========================
-   Estilos generales
+   Reset y estilos generales
 =========================== */
 * {
     box-sizing: border-box;
@@ -38,25 +38,17 @@ body {
     text-decoration: underline;
 }
 
-/* ===========================
-   SCROLL SUAVE
-=========================== */
-html {
-    scroll-behavior: smooth;
-}
+/* SCROLL SUAVE */
+html { scroll-behavior: smooth; }
 
 /* ===========================
    PERFIL DEL ARTISTA
 =========================== */
 .perfil-artista {
-    position: relative;
-    background-image: url('imagenes/fondo_perfil.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     padding: 60px 20px;
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    background: #333 url('fondo_perfil.jpg') center/cover no-repeat;
 }
 
 .perfil-artista img {
@@ -72,16 +64,12 @@ html {
    GALERÍA DE OBRAS
 =========================== */
 .galeria {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 40px 0;
-    background-image: url('imagenes/fondo_galeria.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #eee url('fondo_galeria.jpg') center/cover no-repeat;
 }
 
 .obra {
@@ -98,10 +86,7 @@ html {
     box-shadow: 0 0 25px rgba(0,0,0,0.4);
 }
 
-.obra img {
-    width: 100%;
-    border-radius: 10px;
-}
+.obra img { width: 100%; border-radius: 10px; }
 
 .historia {
     font-size: 0.9em;
@@ -112,14 +97,10 @@ html {
    GALERÍA MBOPI
 =========================== */
 .mbopi {
-    position: relative;
-    background-image: url('imagenes/fondo_mbopi.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     padding: 40px 20px;
     color: white;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    background: #444 url('fondo_mbopi.jpg') center/cover no-repeat;
 }
 
 .mbopi .galeria .obra {
@@ -159,52 +140,23 @@ html {
     box-shadow: -5px -5px 15px rgba(0,0,0,0.2);
     font-size: 0.9em;
     z-index: 101;
-    display: flex;
     flex-direction: column;
+    display: flex;
 }
 
-.subir-obra label {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: left;
-}
+.subir-obra label { margin: 10px 0 5px; text-align: left; }
 
-.subir-obra input, 
-.subir-obra textarea {
-    width: 100%;
-    padding: 6px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 0.9em;
-}
+.subir-obra input,
+.subir-obra textarea { width: 100%; padding: 6px; border-radius: 5px; border: 1px solid #ccc; }
 
 .subir-obra button[type="submit"] {
-    margin-top: 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-top: 10px; background-color: black; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer;
 }
 
-.subir-obra button[type="submit"]:hover {
-    background-color: #333;
-}
+.subir-obra button[type="submit"]:hover { background-color: #333; }
 
 /* BOTÓN CERRAR */
-.cerrar {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: #333;
-}
+.cerrar { position: absolute; top: 5px; right: 10px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #333; }
 
-/* CLASE PARA OCULTAR */
-.oculto {
-    display: none;
-}
+/* CLASE OCULTO */
+.oculto { display: none; }
