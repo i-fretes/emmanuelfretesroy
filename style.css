@@ -1,4 +1,4 @@
-/* =========================== ESTILOS GENERALES =========================== */
+/* =========================== RESET =========================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,56 +9,63 @@ html {
     scroll-behavior: smooth;
 }
 
+/* =========================== GENERAL =========================== */
 body {
     font-family: Arial, sans-serif;
     background-color: #e6dbc9; /* Khaki */
-    color: #2e3830; /* Clean Deep Grey */
+    color: #2e3830; /* Verde oscuro */
     text-align: center;
     line-height: 1.6;
 }
 
 /* =========================== MENÚ =========================== */
-.menu {
-    background-color: #2e3830; /* Clean Deep Grey */
+nav {
+    background-color: #2e3830; /* Verde oscuro */
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.menu a {
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
     color: #e6dbc9; /* Khaki */
-    margin: 0 20px;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
     transition: 0.3s;
 }
 
-.menu a:hover {
-    color: #c53211; /* Cotton Red */
+nav a:hover {
+    color: #c53211; /* Rojo oscuro/naranja */
     text-decoration: underline;
 }
 
-/* =========================== PERFIL ARTISTA =========================== */
+/* =========================== PERFIL =========================== */
 .perfil-artista {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
     background: linear-gradient(135deg, #2e3830, #3a443c);
     padding: 60px 40px;
-    color: #e6dbc9; /* Khaki */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    color: #e6dbc9;
     animation: fadeIn 1.5s ease-in;
 }
 
 .perfil-artista img {
     width: 350px;
     height: 350px;
-    border-radius: 0;
     object-fit: cover;
     margin-right: 50px;
-    border: 4px solid #c53211; /* Cotton Red */
+    border: 4px solid #c53211; /* borde resaltado */
+    border-radius: 10px;
 }
 
 .perfil-texto {
@@ -76,160 +83,123 @@ body {
     margin-bottom: 15px;
 }
 
+/* =========================== ANIMACIÓN =========================== */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateX(-50px);}
-    to { opacity: 1; transform: translateX(0);}
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-/* =========================== GALERÍA =========================== */
-.galeria {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 50px 20px;
+/* =========================== LOGROS =========================== */
+#logros {
+    padding: 60px 20px;
 }
 
-.obra {
-    position: relative;
-    width: 280px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: transform 0.4s, box-shadow 0.4s;
-}
-
-.obra img {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-}
-
-.obra:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-}
-
-.overlay {
-    position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(46,56,48,0.85); /* semi oscuro */
-    color: #e6dbc9;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    transition: opacity 0.4s;
-}
-
-.obra:hover .overlay {
-    opacity: 1;
-}
-
-.overlay h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #c53211;
-}
-
-.overlay p {
-    margin-bottom: 5px;
-}
-
-/* =========================== GALERÍA MBOPI =========================== */
-.mbopi {
-    background-color: #2e3830; /* Clean Deep Grey */
-    padding: 50px 20px;
-    color: #e6dbc9; /* Khaki */
-}
-
-.mbopi h2 {
+#logros h2 {
     font-size: 40px;
     margin-bottom: 30px;
 }
 
-/* =========================== BOTÓN FLOTANTE =========================== */
-.boton-flotante {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #2e3830; /* Clean Deep Grey */
+/* Lista de logros */
+#logros ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#logros li {
+    background-color: #2e3830; /* Verde oscuro */
     color: #e6dbc9; /* Khaki */
-    border: none;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 100;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.3s;
-}
-
-.boton-flotante:hover {
-    background-color: #c53211; /* Cotton Red */
-    transform: translateY(-5px);
-}
-
-/* =========================== FORMULARIO FLOTANTE =========================== */
-.subir-obra {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 320px;
-    max-width: 90%;
-    background: rgba(230,219,201,0.95); /* Khaki semitransparente */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: -5px -5px 15px rgba(0,0,0,0.2);
-    font-size: 0.9em;
-    z-index: 101;
+    width: 250px;
+    height: 180px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-.subir-obra label {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: left;
+#logros li:hover {
+    transform: translateY(-10px);
+    background-color: #3a443c;
 }
 
-.subir-obra input, 
-.subir-obra textarea {
-    width: 100%;
-    padding: 6px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 0.9em;
+#logros h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-.subir-obra button[type="submit"] {
-    margin-top: 10px;
-    background-color: #2e3830;
-    color: #e6dbc9;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.subir-obra button[type="submit"]:hover {
-    background-color: #c53211;
-}
-
-.cerrar {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    background: transparent;
-    border: none;
+#logros p {
     font-size: 18px;
-    cursor: pointer;
-    color: #333;
+}
+/* ================= BIOGRAFÍA ================= */
+#biografia {
+    padding: 60px 20px;
 }
 
-.oculto {
-    display: none;
+#biografia h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.bio {
+    max-width: 900px;
+    margin: auto;
+    font-size: 18px;
+    text-align: justify;
+}
+
+/* ================= GRID DE TARJETAS ================= */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ================= TARJETAS ================= */
+.card {
+    background: #2e3830;
+    color: #e6dbc9;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: all 0.4s ease;
+    transform: translateY(0);
+    cursor: pointer;
+}
+
+/* ================= ANIMACIÓN HOVER ================= */
+.card:hover {
+    transform: translateY(-12px) scale(1.05);
+    background: #3a443c;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* ================= ANIMACIÓN DE ENTRADA ================= */
+.card {
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* delay visual tipo cascada */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

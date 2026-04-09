@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="menu">
+    <a href="index.html">Perfil</a>
+    <a href="galeria.html">Galería</a>
+    <a href="mbopi.html">MBOPI</a>
+    <a href="contacto.html">Contacto</a>
+</nav>
+
+<section class="galeria">
+
+    <div class="obra">
+        <img src="imagenes/cuadro1.jpg">
+        <div class="overlay">
+            <h3>Obra 1</h3>
+            <p>Conexión entre emociones</p>
+            <p><strong>$150</strong></p>
+            <button>Comprar</button>
+        </div>
+    </div>
+
+    <div class="obra">
+        <img src="imagenes/cuadro2.jpg">
+        <div class="overlay">
+            <h3>Obra 2</h3>
+            <p>Arte geométrico</p>
+            <p><strong>$200</strong></p>
+            <button>Comprar</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- BOTÓN Y FORMULARIO -->
+<button id="btnAbrir" class="boton-flotante">➕</button>
+
+<section id="formularioObra" class="subir-obra oculto">
+    <button id="btnCerrar" class="cerrar">X</button>
+    <h2>Agregar obra</h2>
+
+    <form>
+        <input type="text" placeholder="Nombre" required>
+        <textarea placeholder="Historia" required></textarea>
+        <input type="number" placeholder="Precio" required>
+        <input type="file" required>
+        <button type="submit">Subir obra</button>
+    </form>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
