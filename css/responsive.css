@@ -1,64 +1,64 @@
-/* --------------------------------------
-   RESPONSIVE - MENÚ Y AJUSTES GENERALES
--------------------------------------- */
-
+/* --- 1. Ocultar menú en móviles por defecto --- */
 @media (max-width: 768px) {
-  /* --- 1. MENÚ HAMBURGUESA (Unificado) --- */
-  .nav__toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-  }
+    /* Asegurar que el logo y el botón estén alineados */
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
 
-  .nav__links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 1rem;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    z-index: 99;
-  }
+    /* Esconder la lista de enlaces hasta que se haga clic */
+    .nav__links {
+        display: none; 
+        position: absolute;
+        top: 60px; /* Ajusta según la altura de tu barra de navegación */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff; /* Ajusta según el color de fondo de tu sitio */
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+    }
 
-  /* IMPORTANTE: Usamos .active porque es lo que busca tu JS */
-  .nav__links.active {
-    display: flex;
-  }
+    /* Esta clase es la que tu JS (main.js) activa */
+    .nav__links.active {
+        display: flex;
+    }
 
-  /* --- 2. RESTO DE TUS ESTILOS --- */
-  .container { padding: 0 1.5rem; }
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  
-  .hero { min-height: 60vh; padding: 2rem; }
-  .hero__titulo { font-size: 2rem; }
-  .hero__subtitulo { font-size: 0.9rem; }
-  
-  .destacadas-grid, .galeria-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
-  .obra-card__img, .dest-card__img { height: 220px !important; }
-  
-  .sobre-layout, .contacto-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-  .sobre-foto img { max-width: 280px; margin: 0 auto; display: block; }
-  
-  .stats-grid { grid-template-columns: 1fr; }
-  .admin-header, .form-buttons, .table-header { flex-direction: column; text-align: center; }
-  
-  .footer__inner { flex-direction: column; text-align: center; }
+    /* Estilo de los enlaces en el menú móvil para que no se vean "feos" */
+    .nav__links li {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav__links li a {
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: #333;
+    }
+
+    /* Mostrar botón de hamburguesa solo en móvil */
+    .nav__toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
 }
 
-/* Celulares muy pequeños */
-@media (max-width: 480px) {
-  .container { padding: 0 1rem; }
-  h1 { font-size: 1.6rem; }
-  .btn { padding: 0.5rem 1.2rem; font-size: 0.65rem; }
-  .hero__titulo { font-size: 1.6rem; }
+/* --- 2. Asegurar vista de escritorio --- */
+@media (min-width: 769px) {
+    .nav__toggle {
+        display: none; /* Ocultar hamburguesa en escritorio */
+    }
+    .nav__links {
+        display: flex !important;
+        flex-direction: row;
+        gap: 20px;
+    }
 }
