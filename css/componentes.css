@@ -1,0 +1,148 @@
+/* --------------------------------------
+   NAVEGACIÓN
+-------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--blanco);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--sombra);
+  z-index: 100;
+}
+
+.nav__logo {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--negro);
+}
+
+.nav__logo span {
+  color: var(--ocre);
+  font-size: 0.8rem;
+}
+
+.nav__links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav__links a {
+  text-decoration: none;
+  color: var(--negro);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transicion);
+}
+
+.nav__links a:hover,
+.nav__links a.activo {
+  color: var(--ocre);
+}
+
+/* Botón especial para Admin */
+.btn-admin {
+  background: var(--negro);
+  color: var(--blanco) !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 4px;
+}
+
+.btn-admin:hover {
+  background: var(--ocre);
+  color: var(--blanco) !important;
+}
+
+/* Menú hamburguesa */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav__toggle span {
+  width: 25px;
+  height: 2px;
+  background: var(--negro);
+  transition: var(--transicion);
+}
+
+/* --------------------------------------
+   BOTONES
+-------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--negro);
+  text-decoration: none;
+  color: var(--negro);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--transicion);
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn:hover {
+  background: var(--negro);
+  color: var(--blanco);
+}
+
+.btn--ocre {
+  border-color: var(--ocre);
+  color: var(--ocre);
+}
+
+.btn--ocre:hover {
+  background: var(--ocre);
+  color: var(--blanco);
+}
+
+/* --------------------------------------
+   FOOTER
+-------------------------------------- */
+.footer {
+  background: var(--negro);
+  color: var(--blanco);
+  padding: 3rem 2rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__logo {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer__copy {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.footer__social a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-left: 1.5rem;
+  opacity: 0.6;
+}
+
+.footer__social a:hover {
+  opacity: 1;
+}

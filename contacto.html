@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Emmanuel Fretes Roy</title>
+  <!-- CSS comunes -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- CSS específico de contacto -->
+  <link rel="stylesheet" href="css/contacto.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
+    
+    <button class="nav__toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="sobre.html">El Artista</a></li>
+      <li><a href="contacto.html" class="activo">Contacto</a></li>
+      <li><a href="admin.html" class="btn-admin">🔒 Admin</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <span class="eyebrow">Habla con el artista</span>
+        <h1>Contacto</h1>
+        <div class="accent-line"></div>
+        <p class="text-muted">Para adquisición de obras, exposiciones<br>o cualquier consulta.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="contacto-layout">
+          
+          <div class="contacto-info">
+            <h2>Conectemos</h2>
+            <p>Si estás interesado en adquirir una obra, colaborar en una exposición, o simplemente conocer más sobre el trabajo de Emmanuel, no dudes en escribir.</p>
+            <p>Las respuestas suelen llegar en menos de 48 horas.</p>
+
+            <div class="contacto-datos">
+              <div class="contacto-item">
+                <div class="contacto-icono">📧</div>
+                <div class="contacto-texto">
+                  <strong>Email</strong>
+                  <a href="mailto:emmanuel@fretesroy.com">emmanuelfretesroy@hotmail.com</a>
+                </div>
+              </div>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">📱</div>
+                <div class="contacto-texto">
+                  <strong>WhatsApp</strong>
+                  <a href="https://wa.me/595984332922" target="_blank">+595 984 332 922</a>
+                </div>
+              </div>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">📍</div>
+                <div class="contacto-texto">
+                  <strong>Estudio</strong>
+                  <span>Asunción, Paraguay</span>
+                </div>
+              </div>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">🎨</div>
+                <div class="contacto-texto">
+                  <strong>Instagram</strong>
+                  <a href="https://www.instagram.com/emmanuelfretes_/?hl=es"> @emmanuelfretes_</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contacto-formulario">
+            <h3>Enviar un mensaje</h3>
+            
+            <form id="contactoForm" novalidate>
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" placeholder="Tu nombre" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" placeholder="tu@email.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="asunto">Motivo de consulta</label>
+                <select id="asunto">
+                  <option value="">Seleccionar...</option>
+                  <option value="adquisicion">Adquisición de obra</option>
+                  <option value="exposicion">Propuesta de exposición</option>
+                  <option value="prensa">Prensa / medios</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Mensaje *</label>
+                <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--ocre btn-enviar">Enviar mensaje</button>
+              
+              <div id="formMensaje" class="form-mensaje"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">Emmanuel Fretes Roy</p>
+        <p class="footer__copy">© 2024 · Todos los derechos reservados</p>
+      </div>
+      <nav class="footer__social">
+        <a href="#">Instagram</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contacto.js"></script>
+</body>
+</html>

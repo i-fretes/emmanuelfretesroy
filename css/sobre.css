@@ -1,0 +1,143 @@
+/* --------------------------------------
+   SOBRE EL ARTISTA
+-------------------------------------- */
+
+.page-header {
+  padding: 8rem 0 3rem;
+  text-align: center;
+  background: var(--gris-claro);
+}
+
+/* Layout dos columnas */
+.sobre-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+  padding: 3rem 0;
+}
+
+/* Foto del artista */
+.sobre-foto img {
+  width: 100%;
+  border-radius: 8px;
+  background: var(--gris-claro);
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.foto-caption {
+  font-size: 0.7rem;
+  color: var(--gris);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Texto biográfico */
+.sobre-texto p {
+  margin-bottom: 1.2rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+.sobre-texto h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+/* Lista de reconocimientos */
+.reconocimientos {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.reconocimientos li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--gris-claro);
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.reconocimientos li strong {
+  color: var(--ocre);
+  font-weight: normal;
+}
+
+/* Cita */
+.cita-sobre {
+  background: var(--negro);
+  color: white;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.cita-sobre p {
+  font-size: 1.5rem;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cita-sobre span {
+  display: block;
+  margin-top: 1rem;
+  color: var(--ocre);
+  font-size: 0.8rem;
+}
+
+/* Exposiciones */
+.exposiciones {
+  margin-top: 2rem;
+}
+
+.expo-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gris-claro);
+}
+
+.expo-anio {
+  min-width: 70px;
+  font-weight: bold;
+  color: var(--ocre);
+}
+
+.expo-info strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.expo-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gris);
+}
+
+/* Responsive sobre */
+@media (max-width: 768px) {
+  .sobre-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .sobre-foto {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .cita-sobre p {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+  
+  .expo-item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .expo-anio {
+    min-width: auto;
+  }
+}

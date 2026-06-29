@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emmanuel Fretes Roy — Artista Plástico Paraguayo</title>
+  <!-- CSS comunes -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- CSS específico de inicio -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
+    
+    <button class="nav__toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html" class="activo">Inicio</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="sobre.html">El Artista</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="admin.html" class="btn-admin">🔒 Admin</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__content">
+        <span class="eyebrow">Artista Plástico Paraguayo</span>
+        <h1 class="hero__titulo">Arte que <em>nace</em><br>del alma</h1>
+        <p class="hero__subtitulo">Explorando la identidad paraguaya a través del color y la materia</p>
+        <a href="galeria.html" class="btn btn--ocre">Ver galería</a>
+      </div>
+    </section>
+
+    <!-- OBRAS DESTACADAS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Selección</span>
+          <h2>Obras destacadas</h2>
+          <div class="accent-line"></div>
+        </div>
+
+        <div class="destacadas-grid" id="destacadas-grid">
+          <p class="text-muted" style="text-align:center; width:100%;">Cargando obras...</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="galeria.html" class="btn">Ver todas las obras →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITA -->
+    <section class="cita-section">
+      <div class="container">
+        <p class="cita-texto">"Pinto porque necesito traducir en color lo que las palabras no pueden decir."</p>
+        <p class="cita-autor">— Emmanuel Fretes Roy</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">Emmanuel Fretes Roy</p>
+        <p class="footer__copy">© 2024 · Todos los derechos reservados</p>
+      </div>
+      <nav class="footer__social">
+        <a href="#">Instagram</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

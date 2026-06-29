@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería — Emmanuel Fretes Roy</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/galeria.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
+  <button class="nav__toggle" id="menu-toggle"><span></span><span></span><span></span></button>
+  <ul class="nav__links" id="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="galeria.html" class="activo">Galería</a></li>
+    <li><a href="sobre.html">El Artista</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="admin.html" class="btn-admin">🔒 Admin</a></li>
+  </ul>
+</nav>
+
+<main>
+  <header class="page-header">
+    <div class="container">
+      <span class="eyebrow">Obras originales</span>
+      <h1>Galería</h1>
+      <div class="accent-line"></div>
+      <p class="text-muted">Una colección de pinturas que exploran la identidad y el paisaje paraguayo.</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="filtros-wrap">
+      <button class="filtro-btn active" data-filtro="todos">Todas</button>
+      <button class="filtro-btn" data-filtro="oleo">Óleo</button>
+      <button class="filtro-btn" data-filtro="acrilico">Acrílico</button>
+      <button class="filtro-btn" data-filtro="mixta">Mixta</button>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="galeria-grid" id="galeria-grid"></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="obra-modal">
+  <div class="modal__inner">
+    <button class="modal__close" id="cerrar-modal">×</button>
+    <div class="modal__layout">
+      <img class="modal__img" src="">
+      <div class="modal__datos">
+        <span class="eyebrow">Obra</span>
+        <h2 class="modal__titulo"></h2>
+        <dl class="modal__ficha">
+          <dt>Año:</dt><dd class="modal__anio"></dd>
+          <dt>Técnica:</dt><dd class="modal__tecnica"></dd>
+          <dt>Dimensiones:</dt><dd class="modal__dimensiones"></dd>
+        </dl>
+        <p class="modal__descripcion"></p>
+        <a href="contacto.html" class="btn btn--ocre">Consultar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer__inner"><div><p class="footer__logo">Emmanuel Fretes Roy</p><p class="footer__copy">© 2024</p></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/galeria.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+/* --------------------------------------
+   RESPONSIVE GLOBAL
+-------------------------------------- */
+@media (max-width: 768px) {
+  /* Menú hamburguesa */
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blanco);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+  }
+
+  .nav__links.open {
+    display: flex;
+  }
+
+  /* Tipografía */
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  /* Footer */
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__social a {
+    margin: 0 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.65rem;
+  }
+}
+/* --------------------------------------
+   RESPONSIVE - PARA CELULARES Y TABLETS
+-------------------------------------- */
+
+/* Tablets y celulares grandes */
+@media (max-width: 768px) {
+  
+  /* Contenedor */
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  /* Navegacion */
+  .nav__toggle {
+    display: flex;
+  }
+  
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
+  
+  .nav__links.open {
+    display: flex;
+  }
+  
+  /* Tipografia */
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Hero (inicio) */
+  .hero {
+    min-height: 60vh;
+    padding: 2rem;
+  }
+  
+  .hero__titulo {
+    font-size: 2rem;
+  }
+  
+  .hero__subtitulo {
+    font-size: 0.9rem;
+  }
+  
+  /* Obras destacadas (inicio) */
+  .destacadas-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dest-card__img {
+    height: 220px;
+  }
+  
+  .dest-card--large .dest-card__img {
+    height: 250px;
+  }
+  
+  /* Cita */
+  .cita p {
+    font-size: 1.2rem;
+  }
+  
+  /* Galeria */
+  .galeria-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .obra-card__img {
+    height: 220px !important;
+  }
+  
+  .filtros-wrap {
+    gap: 0.5rem;
+  }
+  
+  .filtro-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.65rem;
+  }
+  
+  /* Modal */
+  .modal__layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal__img {
+    min-height: 200px;
+  }
+  
+  .modal__datos {
+    padding: 1.5rem;
+  }
+  
+  .modal__datos h2 {
+    font-size: 1.3rem;
+  }
+  
+  /* Sobre el artista */
+  .sobre-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .sobre-foto img {
+    max-width: 280px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .expo-item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .expo-anio {
+    min-width: auto;
+  }
+  
+  /* Contacto */
+  .contacto-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contacto-item {
+    margin-bottom: 1rem;
+  }
+  
+  /* Admin */
+  .admin-container {
+    padding: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .form-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .table-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /* Tabla obras en admin */
+  .obras-table th:nth-child(4),
+  .obras-table td:nth-child(4) {
+    display: none;
+  }
+  
+  /* Footer */
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer__social a {
+    margin: 0 0.75rem;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.65rem;
+  }
+  
+  .hero__titulo {
+    font-size: 1.6rem;
+  }
+  
+  .page-header {
+    padding: 80px 0 30px;
+  }
+  
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .filtro-btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.6rem;
+  }
+  
+  .obra-card__info h3 {
+    font-size: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+}

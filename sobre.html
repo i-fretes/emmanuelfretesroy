@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Artista — Emmanuel Fretes Roy</title>
+  <!-- CSS comunes -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- CSS específico de sobre -->
+  <link rel="stylesheet" href="css/sobre.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
+    
+    <button class="nav__toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="sobre.html" class="activo">El Artista</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="admin.html" class="btn-admin">🔒 Admin</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <span class="eyebrow">Biografía</span>
+        <h1>Emmanuel Fretes Roy</h1>
+        <div class="accent-line"></div>
+        <p class="text-muted">Asunción, Paraguay · 1979</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="sobre-layout">
+          
+          <!-- FOTO DEL ARTISTA (placeholder) -->
+          <div class="sobre-foto">
+            <img src="imagenes/fotoperfil1.jpg" alt="Emmanuel Fretes Roy" onerror="this.src='https://placehold.co/500x600/e8e4de/1a1a1a?text=Emmanuel+Fretes+Roy'">
+            <p class="foto-caption">Emmanuel Fretes Roy en su estudio, Asunción.</p>
+          </div>
+
+          <!-- TEXTO BIOGRÁFICO CORREGIDO -->
+          <div class="sobre-texto">
+            <h2>Un artista autodidacta entre la tradición y la modernidad</h2>
+            <p><strong>Nacido en Asunción en 1979</strong>, Emmanuel Fretes Roy es un artista plástico paraguayo que desarrolló su talento de manera <strong>autodidacta</strong>. Su obra, de una profunda riqueza conceptual, explora la identidad, la memoria y el paisaje del Paraguay, creando un universo pictórico donde el color y la materia cuentan historias.</p>
+
+            <p>Su formación incluye estudios de <strong>Restauración sobre tela, madera y yeso</strong> en Bellas Artes de Asunción (2010-11), lo que nutrió su profundo conocimiento de las técnicas y los soportes pictóricos.</p>
+
+            <p>Su trabajo ha sido reconocido con importantes galardones, incluyendo el <strong>primer premio en el concurso "Henri Matisse" en 2009</strong> y el segundo lugar en 2008. Ya en 1996, había obtenido el primer premio en Pintura Mural "Oñondivepá" de la Municipalidad de Asunción.</p>
+
+            <h3>Citas del artista</h3>
+            <blockquote style="margin: 1rem 0; padding: 1rem; border-left: 3px solid var(--ocre); background: var(--gris-claro);">
+              <p style="font-style: italic; color: #444;">"El que todo ya exista, no quiere decir que no evolucione, pues los cambios nacen, y el creer en sí mismo no produce,g porque es la imaginación la guía de la memoria."</p>
+              <footer style="margin-top: 0.5rem;">— Emmanuel Fretes Roy, Catálogo 2003</footer>
+            </blockquote>
+
+            <h3>Premios y distinciones</h3>
+            <ul class="reconocimientos">
+              <li><strong>2009</strong> · 1° Lugar Premio Matisse</li>
+              <li><strong>2008</strong> · 2° Lugar Premio Matisse</li>
+              <li><strong>1996</strong> · 1° Premio Oñondivepá (Mural), Municipalidad de Asunción</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITA DESTACADA -->
+    <section class="cita-sobre">
+      <div class="container">
+        <p>"La imaginación es la guía de la memoria, y la pintura, mi religión única."</p>
+        <span>— Emmanuel Fretes Roy</span>
+      </div>
+    </section>
+
+    <!-- EXPOSICIONES RELEVANTES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Recorrido artístico</span>
+          <h2>Exposiciones destacadas</h2>
+          <div class="accent-line"></div>
+        </div>
+
+        <div class="exposiciones">
+          <div class="expo-item">
+            <div class="expo-anio">2016</div>
+            <div class="expo-info"><strong>Face-book</strong><p>Galería Fábrica, Asunción</p></div>
+          </div>
+          <div class="expo-item">
+            <div class="expo-anio">2015</div>
+            <div class="expo-info"><strong>En Llamas</strong><p>Galería Fábrica, Asunción</p></div>
+          </div>
+          <div class="expo-item">
+            <div class="expo-anio">2015</div>
+            <div class="expo-info"><strong>Óleos</strong><p>Galería Matices, Asunción</p></div>
+          </div>
+          <div class="expo-item">
+            <div class="expo-anio">2014</div>
+            <div class="expo-info"><strong>Huellas</strong><p>Galería Arte Actual, Asunción</p></div>
+          </div>
+          <div class="expo-item">
+            <div class="expo-anio">2011</div>
+            <div class="expo-info"><strong>Regards Croises du Bicentenaire</strong><p>Embajada de Paraguay, París, Francia</p></div>
+          </div>
+          <div class="expo-item">
+            <div class="expo-anio">2010</div>
+            <div class="expo-info"><strong>Óleos</strong><p>MOYA (Museum of Young Art), Viena, Austria</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">Emmanuel Fretes Roy</p>
+        <p class="footer__copy">© 2024 · Todos los derechos reservados</p>
+      </div>
+      <nav class="footer__social">
+        <a href="#">Instagram</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

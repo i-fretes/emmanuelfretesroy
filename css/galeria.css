@@ -1,0 +1,220 @@
+/* --------------------------------------
+   GALERÍA - ESTILOS COMPLETOS
+-------------------------------------- */
+
+.page-header {
+  text-align: center;
+  background: var(--gris-claro);
+  padding: 6rem 0 3rem;
+}
+
+.page-header h1 {
+  margin-top: 0.5rem;
+}
+
+.accent-line {
+  width: 60px;
+  height: 2px;
+  background: var(--ocre);
+  margin: 1rem auto;
+}
+
+/* Filtros */
+.filtros-wrap {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.filtro-btn {
+  background: none;
+  border: 1px solid var(--gris-claro);
+  padding: 0.6rem 1.8rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--gris);
+  border-radius: 30px;
+}
+
+.filtro-btn:hover {
+  border-color: var(--ocre);
+  color: var(--ocre);
+}
+
+.filtro-btn.active {
+  background: var(--negro);
+  border-color: var(--negro);
+  color: white;
+}
+
+/* Grid de galería */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0 4rem;
+}
+
+/* Tarjeta de obra */
+.obra-card {
+  background: white;
+  border: 1px solid var(--gris-claro);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.obra-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.obra-card__img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  background: var(--gris-claro);
+  display: block;
+}
+
+.obra-card__info {
+  padding: 1rem;
+}
+
+.obra-card__info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.obra-card__info p {
+  font-size: 0.75rem;
+  color: var(--gris);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__inner {
+  background: white;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border-radius: 8px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.modal__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.modal__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 300px;
+  background: var(--gris-claro);
+}
+
+.modal__datos {
+  padding: 2rem;
+}
+
+.modal__datos h2 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.modal__ficha {
+  margin: 1rem 0;
+}
+
+.modal__ficha dt {
+  font-weight: bold;
+  color: var(--ocre);
+  display: inline-block;
+  width: 80px;
+}
+
+.modal__ficha dd {
+  display: inline;
+}
+
+.modal__descripcion {
+  margin: 1rem 0;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 5rem 0 2rem;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .filtro-btn {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.65rem;
+  }
+  
+  .galeria-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .obra-card__img {
+    height: 220px;
+  }
+  
+  .modal__layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal__img {
+    min-height: 200px;
+  }
+  
+  .modal__datos {
+    padding: 1.5rem;
+  }
+}
