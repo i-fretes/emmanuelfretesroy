@@ -1,27 +1,30 @@
 /* ============================================================
-   MENÚ HAMBURGUESA - SOLO CSS
+   MENÚ HAMBURGUESA - CORREGIDO
    ============================================================ */
 
-/* === BOTÓN === */
+/* Botón hamburguesa */
 .nav__toggle {
   display: none;
-  background: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 10px;
-  z-index: 999;
+  padding: 0;
+  z-index: 1000;
 }
 
 .nav__toggle span {
   display: block;
-  width: 28px;
+  width: 100%;
   height: 3px;
-  margin: 5px 0;
   background: #1a1a1a;
-  transition: 0.3s;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
-/* === X === */
 .nav__toggle.active span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
@@ -32,27 +35,30 @@
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* === MÓVIL === */
+/* ============================================================
+   RESPONSIVE - MÓVIL
+   ============================================================ */
+
 @media (max-width: 768px) {
   .nav__toggle {
-    display: block;
+    display: flex;
   }
 
   .nav__links {
     position: fixed;
     top: 0;
-    right: -300px;
+    right: -100%;
     width: 280px;
-    height: 100%;
-    background: white;
-    padding: 80px 30px;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 80px 30px 30px;
     box-shadow: -5px 0 20px rgba(0,0,0,0.1);
     transition: right 0.3s ease;
-    z-index: 998;
+    z-index: 999;
     list-style: none;
     margin: 0;
     display: flex;
-    flex-direction: column;
   }
 
   .nav__links.active {
@@ -60,8 +66,8 @@
   }
 
   .nav__links li {
-    margin: 5px 0;
     width: 100%;
+    margin: 5px 0;
   }
 
   .nav__links a {
@@ -70,7 +76,7 @@
     font-size: 1.1rem;
     color: #1a1a1a;
     text-decoration: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .nav__links a.activo {
@@ -79,7 +85,7 @@
 
   .btn-admin {
     background: #1a1a1a;
-    color: white !important;
+    color: #ffffff !important;
     padding: 10px 20px;
     border-radius: 6px;
     text-align: center;
