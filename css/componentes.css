@@ -146,3 +146,112 @@
 .footer__social a:hover {
   opacity: 1;
 }
+/* ============================================================
+   MENÚ HAMBURGUESA (Móvil)
+   ============================================================ */
+
+/* Botón hamburguesa */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #1a1a1a;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animación del botón cuando está activo */
+.nav__toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav__toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav__toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ============================================================
+   RESPONSIVE - MÓVIL
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Mostrar botón hamburguesa en móvil */
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* Menú oculto por defecto en móvil */
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 80px 30px 30px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 99;
+    gap: 20px;
+    overflow-y: auto;
+  }
+
+  /* Menú visible cuando está activo */
+  .nav__links.active {
+    right: 0;
+  }
+
+  /* Estilos de los enlaces en móvil */
+  .nav__links li {
+    width: 100%;
+  }
+
+  .nav__links a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  .nav__links a:hover,
+  .nav__links a.activo {
+    color: #b8860b;
+  }
+
+  /* Botón admin en móvil */
+  .btn-admin {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #1a1a1a;
+    color: white !important;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 0.9rem !important;
+  }
+
+  .btn-admin:hover {
+    background: #333;
+  }
+}
