@@ -147,21 +147,23 @@
   opacity: 1;
 }
 /* ============================================================
-   MENÚ HAMBURGUESA (Móvil)
+   MENÚ CELULAR - Versión mejorada
    ============================================================ */
 
-/* Botón hamburguesa */
+/* === BOTÓN HAMBURGUESA === */
 .nav__toggle {
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   width: 30px;
-  height: 22px;
+  height: 25px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 100;
+  z-index: 1000;
+  position: relative;
 }
 
 .nav__toggle span {
@@ -170,13 +172,12 @@
   height: 3px;
   background: #1a1a1a;
   border-radius: 3px;
-  transition: all 0.3s ease;
-  transform-origin: center;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Animación del botón cuando está activo */
+/* Animación a X */
 .nav__toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
 .nav__toggle.active span:nth-child(2) {
@@ -185,38 +186,38 @@
 }
 
 .nav__toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* ============================================================
-   RESPONSIVE - MÓVIL
-   ============================================================ */
-
+/* === MENÚ MÓVIL === */
 @media (max-width: 768px) {
-  /* Mostrar botón hamburguesa en móvil */
+  /* Mostrar botón en móvil */
   .nav__toggle {
     display: flex;
   }
 
-  /* Menú oculto por defecto en móvil */
+  /* Ocultar menú por defecto */
   .nav__links {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
-    max-width: 300px;
+    width: 75%;
+    max-width: 320px;
     height: 100vh;
-    background: white;
+    background: #ffffff;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: 80px 30px 30px;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 99;
-    gap: 20px;
+    margin: 0;
+    list-style: none;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
     overflow-y: auto;
   }
 
-  /* Menú visible cuando está activo */
+  /* Menú visible */
   .nav__links.active {
     right: 0;
   }
@@ -224,15 +225,20 @@
   /* Estilos de los enlaces en móvil */
   .nav__links li {
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .nav__links a {
     display: block;
-    padding: 12px 0;
+    width: 100%;
+    padding: 14px 0;
     font-size: 1.1rem;
-    border-bottom: 1px solid #f0f0f0;
+    font-weight: 500;
     color: #1a1a1a;
     text-decoration: none;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.2s ease;
   }
 
   .nav__links a:hover,
@@ -240,18 +246,20 @@
     color: #b8860b;
   }
 
-  /* Botón admin en móvil */
+  /* Botón Admin en móvil */
   .btn-admin {
-    display: inline-block;
-    padding: 8px 16px;
+    display: inline-block !important;
+    margin-top: 15px;
+    padding: 10px 20px;
     background: #1a1a1a;
-    color: white !important;
-    border-radius: 4px;
-    margin-top: 10px;
-    font-size: 0.9rem !important;
+    color: #ffffff !important;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.95rem !important;
+    border-bottom: none !important;
   }
 
   .btn-admin:hover {
-    background: #333;
+    background: #333333;
   }
 }
