@@ -13,7 +13,13 @@
 
 <nav class="nav">
   <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
-  <button class="nav__toggle" id="menu-toggle"><span></span><span></span><span></span></button>
+  
+  <button class="nav__toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <ul class="nav__links" id="nav-links">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="galeria.html">Galería</a></li>
@@ -174,30 +180,31 @@
             </tbody>
           </table>
         </div>
-      </div>     
-<div class="table-container" style="margin-top: 2rem;">
-  <div class="table-header">
-    <h3>📬 Mensajes de contacto</h3>
-    <button id="borrarMensajesBtn" class="btn-small btn-delete" style="background:#c0392b; color:white;">Borrar todos</button>
-  </div>
-  
-  <div class="table-responsive">
-    <table class="obras-table">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Nombre</th>
-          <th>Email</th>
-          <th>Asunto</th>
-          <th>Mensaje</th>
-        </tr>
-      </thead>
-      <tbody id="tablaMensajes">
-        <tr><td colspan="5" class="empty-row">No hay mensajes guardados</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+      </div>
+      
+      <div class="table-container" style="margin-top: 2rem;">
+        <div class="table-header">
+          <h3>📬 Mensajes de contacto</h3>
+          <button id="borrarMensajesBtn" class="btn-small btn-delete" style="background:#c0392b; color:white;">Borrar todos</button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="obras-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Asunto</th>
+                <th>Mensaje</th>
+              </tr>
+            </thead>
+            <tbody id="tablaMensajes">
+              <tr><td colspan="5" class="empty-row">No hay mensajes guardados</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       
     </div>
   </div>
