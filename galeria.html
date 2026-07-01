@@ -13,13 +13,9 @@
 
 <nav class="nav">
   <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
-  
   <button class="nav__toggle" id="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
-
   <ul class="nav__links" id="nav-links">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="galeria.html" class="activo">Galería</a></li>
@@ -59,7 +55,7 @@
   <div class="modal__inner">
     <button class="modal__close" id="cerrar-modal">×</button>
     <div class="modal__layout">
-      <img class="modal__img" src="">
+      <img class="modal__img" src="" alt="">
       <div class="modal__datos">
         <span class="eyebrow">Obra</span>
         <h2 class="modal__titulo"></h2>
@@ -75,7 +71,18 @@
   </div>
 </div>
 
-<footer class="footer"><div class="footer__inner"><div><p class="footer__logo">Emmanuel Fretes Roy</p><p class="footer__copy">© 2024</p></div></div></footer>
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <p class="footer__logo">Emmanuel Fretes Roy</p>
+      <p class="footer__copy">© 2024 · Todos los derechos reservados</p>
+    </div>
+    <nav class="footer__social">
+      <a href="https://www.instagram.com/emmanuelfretes_/" target="_blank">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-config.js"></script>
