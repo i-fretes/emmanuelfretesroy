@@ -1,152 +1,175 @@
 /* ============================================================
-   MENÚ HAMBURGUESA - CORREGIDO
+   COMPONENTES GLOBALES
    ============================================================ */
 
-/* Botón hamburguesa */
-.nav__toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 22px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1000;
-}
-
-.nav__toggle span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #1a1a1a;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.nav__toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-.nav__toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.nav__toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* ============================================================
-   RESPONSIVE - MÓVIL
-   ============================================================ */
-
-@media (max-width: 768px) {
-  .nav__toggle {
-    display: flex;
-  }
-
-  .nav__links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: #ffffff;
-    flex-direction: column;
-    padding: 80px 30px 30px;
-    box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 999;
-    list-style: none;
-    margin: 0;
-    display: flex;
-  }
-
-  .nav__links.active {
-    right: 0;
-  }
-
-  .nav__links li {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .nav__links a {
-    display: block;
-    padding: 12px 0;
-    font-size: 1.1rem;
-    color: #1a1a1a;
-    text-decoration: none;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .nav__links a.activo {
-    color: #b8860b;
-  }
-
-  .btn-admin {
-    background: #1a1a1a;
-    color: #ffffff !important;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-align: center;
-    border-bottom: none !important;
-    margin-top: 10px;
-  }
-}
-/* ============================================================
-   NAVBAR
-   ============================================================ */
-
+/* ── NAVBAR ── */
 .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: var(--blanco);
+  border-bottom: 1px solid var(--gris-claro);
+  z-index: 500;
 }
 
 .nav__logo {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1a1a1a;
+  font-size: 1.1rem;
   text-decoration: none;
+  color: var(--negro);
+  font-weight: normal;
+  letter-spacing: 0.02em;
 }
 
 .nav__logo span {
-  font-weight: 300;
-  color: #666;
+  color: var(--ocre);
 }
 
 .nav__links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
   align-items: center;
 }
 
 .nav__links a {
   text-decoration: none;
-  color: #1a1a1a;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  color: var(--negro);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
 }
 
 .nav__links a:hover,
 .nav__links a.activo {
-  color: #b8860b;
+  color: var(--ocre);
 }
 
 .btn-admin {
-  background: #1a1a1a;
-  color: #ffffff !important;
-  padding: 8px 16px;
+  background: var(--negro);
+  color: white !important;
+  padding: 0.4rem 1rem;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.75rem !important;
 }
 
 .btn-admin:hover {
-  background: #333;
+  background: #333 !important;
+  color: white !important;
+}
+
+/* ── BOTÓN HAMBURGUESA ── */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+  position: relative;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--negro);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Animación X cuando está activo */
+.nav__toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav__toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ── BOTONES GENERALES ── */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--negro);
+  background: none;
+  color: var(--negro);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: var(--transicion);
+}
+
+.btn:hover {
+  background: var(--negro);
+  color: white;
+}
+
+.btn--ocre {
+  background: var(--ocre);
+  border-color: var(--ocre);
+  color: white;
+}
+
+.btn--ocre:hover {
+  background: #9a7a3e;
+  border-color: #9a7a3e;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--negro);
+  color: white;
+  padding: 2rem 0;
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__logo {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.footer__copy {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.footer__social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer__social a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.footer__social a:hover {
+  color: var(--ocre);
 }
