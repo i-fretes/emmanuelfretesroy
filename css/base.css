@@ -1,24 +1,17 @@
-/* --------------------------------------
+/* ============================================================
    RESET Y VARIABLES
--------------------------------------- */
-/* Asegura que todo use caja flexible */
-img {
-  max-width: 100%;
-  height: auto;
-}
+   ============================================================ */
 
-/* Evita que elementos se desborden */
-.container,
-.galeria-grid,
-.destacadas-grid,
-.contacto-layout,
-.sobre-layout {
-  overflow-x: hidden;
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 :root {
@@ -32,9 +25,10 @@ img {
   --transicion: all 0.3s ease;
 }
 
-/* --------------------------------------
+/* ============================================================
    ESTILOS BASE
--------------------------------------- */
+   ============================================================ */
+
 body {
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   background: var(--blanco);
@@ -42,26 +36,14 @@ body {
   line-height: 1.7;
 }
 
-/* Tipografía */
 h1, h2, h3, h4 {
   font-weight: normal;
   letter-spacing: -0.02em;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-}
+h1 { font-size: 3rem;   margin-bottom: 1rem; }
+h2 { font-size: 2rem;   margin-bottom: 1.5rem; }
+h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
 
 .eyebrow {
   font-size: 0.7rem;
@@ -76,19 +58,19 @@ h3 {
   color: var(--gris);
 }
 
-/* Contenedor */
+/* ── Contenedor ── */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Espacio para nav fija */
+/* ── Espacio para nav fija (misma altura que .nav en componentes.css) ── */
 main {
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
-/* Secciones generales */
+/* ── Secciones ── */
 .section {
   padding: 4rem 0;
 }
@@ -98,7 +80,7 @@ main {
   margin-bottom: 3rem;
 }
 
-/* Línea decorativa */
+/* ── Línea decorativa ── */
 .accent-line {
   width: 60px;
   height: 2px;
