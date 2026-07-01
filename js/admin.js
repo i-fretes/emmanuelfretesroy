@@ -1,202 +1,10 @@
-// ========== admin.js - VERSIÓN COMPLETA Y FUNCIONAL ==========
+// ========== admin.js - SUPABASE VERSION ==========
+
 const PASS = 'artista123';
-const STORAGE_KEY = 'mis_obras';
 
-function getObras() {
-  let data = localStorage.getItem(STORAGE_KEY);
-  if (data) {
-    return JSON.parse(data);
-  }
-  return [];
-}
-
-function saveObras(obras) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(obras));
-  if (typeof window.cargarGaleria === 'function') window.cargarGaleria();
-  if (typeof window.cargarDestacadas === 'function') window.cargarDestacadas();
-  if (document.getElementById('tablaObras')) renderTabla();
-}
-
-function renderTabla() {
-  let obras = getObras();
-  let tbody = document.getElementById('tablaObras');
-  if (!tbody) return;
-  
-  if (obras.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:2rem;">No hay obras cargadas</td></tr>';
-    return;
-  }
-  
-  tbody.innerHTML = '';
-  for (let i = 0; i < obras.length; i++) {
-    let obra = obras[i];
-    let row = tbody.insertRow();
-    
-    let imagenHtml = '';
-    if (obra.imagenBase64 && obra.imagenBase64.startsWith('data:image')) {
-      imagenHtml = `<img src="${obra.imagenBase64}" width="50" height="50" style="object-fit:cover; border-radius:4px;">`;
-    } else {
-      imagenHtml = '<div style="width:50px;height:50px;background:#e8e4de;display:flex;align-items:center;justify-content:center;">🎨</div>';
-    }
-    
-    row.innerHTML = `
-      <td style="text-align:center">${imagenHtml}</td>
-      <td><strong>${obra.titulo}</strong><br><small>${obra.tecnica}</small></td>
-      <td>${obra.anio}</td>
-      <td>${obra.destacada ? '⭐ Sí' : '—'}</td>
-      <td>
-        <button class="btn-small btn-edit" data-id="${obra.id}" style="background:#b8924a;color:white;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;margin-right:5px;">Editar</button>
-        <button class="btn-small btn-delete" data-id="${obra.id}" style="background:#c0392b;color:white;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;">Eliminar</button>
-      </td>
-    `;
-  }
-  
-  document.querySelectorAll('.btn-edit').forEach(btn => {
-    btn.addEventListener('click', () => editarObra(parseInt(btn.dataset.id)));
-  });
-  document.querySelectorAll('.btn-delete').forEach(btn => {
-    btn.addEventListener('click', () => eliminarObra(parseInt(btn.dataset.id)));
-  });
-}
-
-function eliminarObra(id) {
-  if (!confirm('¿Eliminar esta obra permanentemente?')) return;
-  
-  let obras = getObras();
-  let nuevasObras = obras.filter(o => o.id !== id);
-  saveObras(nuevasObras);
-  actualizarStats();
-  mostrarMsg('✓ Obra eliminada correctamente');
-}
-
-function editarObra(id) {
-  let obra = getObras().find(o => o.id === id);
-  if (!obra) return;
-  document.getElementById('obraId').value = obra.id;
-  document.getElementById('titulo').value = obra.titulo;
-  document.getElementById('anio').value = obra.anio;
-  document.getElementById('tecnica').value = obra.tecnica;
-  document.getElementById('dimensiones').value = obra.dimensiones || '';
-  document.getElementById('descripcion').value = obra.descripcion || '';
-  document.getElementById('destacada').checked = obra.destacada;
-  document.getElementById('formTitle').innerHTML = '✏️ Editando obra';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function actualizarStats() {
-  let obras = getObras();
-  let totalSpan = document.getElementById('totalObras');
-  if (totalSpan) totalSpan.innerText = obras.length;
-  let destacadasSpan = document.getElementById('totalDestacadas');
-  if (destacadasSpan) destacadasSpan.innerText = obras.filter(o => o.destacada).length;
-  let ultimoSpan = document.getElementById('ultimoAnio');
-  if (ultimoSpan) {
-    let ultimo = obras.length ? Math.max(...obras.map(o => o.anio)) : '-';
-    ultimoSpan.innerText = ultimo;
-  }
-  let countSpan = document.getElementById('obrasCount');
-  if (countSpan) countSpan.innerText = obras.length + ' obras';
-}
-
-function mostrarMsg(texto, error = false) {
-  let toast = document.getElementById('toastMsg');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'toastMsg';
-    toast.style.cssText = 'position:fixed;bottom:2rem;right:2rem;background:#1a1a1a;color:white;padding:0.7rem 1.2rem;border-radius:4px;opacity:0;transition:0.3s;z-index:1000';
-    document.body.appendChild(toast);
-  }
-  toast.textContent = texto;
-  toast.style.background = error ? '#c0392b' : '#2c3e50';
-  toast.style.opacity = '1';
-  setTimeout(() => toast.style.opacity = '0', 2500);
-}
-
-function guardarObra(e) {
-  e.preventDefault();
-  let id = document.getElementById('obraId').value;
-  let titulo = document.getElementById('titulo').value.trim();
-  let anio = parseInt(document.getElementById('anio').value);
-  let tecnica = document.getElementById('tecnica').value.trim();
-  let dimensiones = document.getElementById('dimensiones').value.trim();
-  let descripcion = document.getElementById('descripcion').value.trim();
-  let destacada = document.getElementById('destacada').checked;
-  let archivo = document.getElementById('imagenArchivo').files[0];
-  
-  if (!titulo || !anio || !tecnica) {
-    mostrarMsg('Completá título, año y técnica', true);
-    return;
-  }
-  
-  let categoria = 'mixta';
-  if (tecnica.toLowerCase().includes('óleo')) categoria = 'oleo';
-  else if (tecnica.toLowerCase().includes('acrílico')) categoria = 'acrilico';
-  
-  let obras = getObras();
-  
-  const guardar = (imagenBase64) => {
-    if (id) {
-      let idx = obras.findIndex(o => o.id == id);
-      if (idx !== -1) {
-        obras[idx] = { ...obras[idx], titulo, anio, tecnica, dimensiones, descripcion, destacada, categoria };
-        if (imagenBase64) obras[idx].imagenBase64 = imagenBase64;
-        mostrarMsg('✓ Obra actualizada');
-      }
-    } else {
-      let nuevaObra = { 
-        id: Date.now(), 
-        titulo, 
-        anio, 
-        tecnica, 
-        dimensiones, 
-        descripcion, 
-        destacada, 
-        categoria,
-        imagenBase64: imagenBase64 || null
-      };
-      obras.push(nuevaObra);
-      mostrarMsg('✓ Obra agregada correctamente');
-    }
-    saveObras(obras);
-    renderTabla();
-    actualizarStats();
-    limpiarForm();
-  };
-  
-  if (archivo) {
-    if (!archivo.type.startsWith('image/')) {
-      mostrarMsg('El archivo debe ser una imagen', true);
-      return;
-    }
-    if (archivo.size > 2 * 1024 * 1024) {
-      mostrarMsg('La imagen no debe superar los 2MB', true);
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = function(event) { guardar(event.target.result); };
-    reader.readAsDataURL(archivo);
-  } else {
-    guardar(null);
-  }
-}
-
-function limpiarForm() {
-  document.getElementById('obraId').value = '';
-  document.getElementById('titulo').value = '';
-  document.getElementById('anio').value = '';
-  document.getElementById('tecnica').value = '';
-  document.getElementById('dimensiones').value = '';
-  document.getElementById('descripcion').value = '';
-  document.getElementById('imagenArchivo').value = '';
-  document.getElementById('destacada').checked = false;
-  document.getElementById('formTitle').innerHTML = '➕ Agregar obra';
-  let preview = document.getElementById('vistaPrevia');
-  if (preview) preview.style.display = 'none';
-  let previewImg = document.getElementById('previewImg');
-  if (previewImg) previewImg.src = '';
-  let fileName = document.getElementById('fileName');
-  if (fileName) fileName.innerText = 'Ningún archivo seleccionado';
-}
+// ============================================================
+// LOGIN / LOGOUT
+// ============================================================
 
 function login(e) {
   e.preventDefault();
@@ -204,8 +12,7 @@ function login(e) {
     sessionStorage.setItem('admin_logueado', 'true');
     document.getElementById('loginPanel').style.display = 'none';
     document.getElementById('adminPanel').style.display = 'block';
-    renderTabla();
-    actualizarStats();
+    cargarPanel();
   } else {
     document.getElementById('loginError').innerText = 'Contraseña incorrecta';
   }
@@ -217,10 +24,273 @@ function logout() {
   document.getElementById('adminPanel').style.display = 'none';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// ============================================================
+// CARGAR PANEL COMPLETO
+// ============================================================
+
+async function cargarPanel() {
+  await Promise.all([renderTabla(), cargarMensajes()]);
+}
+
+// ============================================================
+// TABLA DE OBRAS
+// ============================================================
+
+async function renderTabla() {
+  const tbody = document.getElementById('tablaObras');
+  if (!tbody) return;
+
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:2rem;">Cargando...</td></tr>';
+
+  try {
+    const obras = await obtenerObras();
+    actualizarStats(obras);
+
+    if (obras.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="empty-row">No hay obras cargadas</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = '';
+    obras.forEach(obra => {
+      const row = tbody.insertRow();
+      const imagenHtml = obra.imagen_url
+        ? `<img src="${obra.imagen_url}" width="50" height="50" style="object-fit:cover; border-radius:4px;">`
+        : '<div style="width:50px;height:50px;background:#e8e4de;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🎨</div>';
+
+      row.innerHTML = `
+        <td style="text-align:center">${imagenHtml}</td>
+        <td><strong>${obra.titulo}</strong><br><small>${obra.tecnica}</small></td>
+        <td>${obra.anio}</td>
+        <td>${obra.tecnica}</td>
+        <td>${obra.destacada ? '⭐ Sí' : '—'}</td>
+        <td>
+          <button class="btn-small btn-edit" data-id="${obra.id}"
+            style="background:#b8924a;color:white;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;margin-right:5px;">
+            Editar
+          </button>
+          <button class="btn-small btn-delete" data-id="${obra.id}"
+            style="background:#c0392b;color:white;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;">
+            Eliminar
+          </button>
+        </td>
+      `;
+    });
+
+    document.querySelectorAll('.btn-edit').forEach(btn => {
+      btn.addEventListener('click', () => editarObra(btn.dataset.id));
+    });
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => confirmarEliminar(btn.dataset.id));
+    });
+
+  } catch (err) {
+    console.error('Error cargando obras:', err);
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:red; padding:2rem;">Error al cargar obras.</td></tr>';
+  }
+}
+
+function actualizarStats(obras) {
+  const totalSpan = document.getElementById('totalObras');
+  if (totalSpan) totalSpan.innerText = obras.length;
+
+  const destacadasSpan = document.getElementById('totalDestacadas');
+  if (destacadasSpan) destacadasSpan.innerText = obras.filter(o => o.destacada).length;
+
+  const ultimoSpan = document.getElementById('ultimoAnio');
+  if (ultimoSpan) {
+    const ultimo = obras.length ? Math.max(...obras.map(o => o.anio)) : '-';
+    ultimoSpan.innerText = ultimo;
+  }
+
+  const countSpan = document.getElementById('obrasCount');
+  if (countSpan) countSpan.innerText = obras.length + ' obras';
+}
+
+// ============================================================
+// EDITAR / ELIMINAR
+// ============================================================
+
+async function editarObra(id) {
+  try {
+    const obras = await obtenerObras();
+    const obra = obras.find(o => String(o.id) === String(id));
+    if (!obra) return;
+
+    document.getElementById('obraId').value = obra.id;
+    document.getElementById('titulo').value = obra.titulo;
+    document.getElementById('anio').value = obra.anio;
+    document.getElementById('tecnica').value = obra.tecnica;
+    document.getElementById('dimensiones').value = obra.dimensiones || '';
+    document.getElementById('descripcion').value = obra.descripcion || '';
+    document.getElementById('destacada').checked = obra.destacada;
+    document.getElementById('formTitle').innerHTML = '✏️ Editando obra';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    mostrarMsg('Error al cargar la obra para editar', true);
+  }
+}
+
+async function confirmarEliminar(id) {
+  if (!confirm('¿Eliminar esta obra permanentemente?')) return;
+
+  try {
+    await eliminarObra(id);
+    mostrarMsg('✓ Obra eliminada correctamente');
+    await renderTabla();
+  } catch (err) {
+    console.error('Error eliminando:', err);
+    mostrarMsg('Error al eliminar la obra', true);
+  }
+}
+
+// ============================================================
+// GUARDAR OBRA (crear o actualizar)
+// ============================================================
+
+async function guardarObra(e) {
+  e.preventDefault();
+
+  const id = document.getElementById('obraId').value;
+  const titulo = document.getElementById('titulo').value.trim();
+  const anio = parseInt(document.getElementById('anio').value);
+  const tecnica = document.getElementById('tecnica').value.trim();
+  const dimensiones = document.getElementById('dimensiones').value.trim();
+  const descripcion = document.getElementById('descripcion').value.trim();
+  const destacada = document.getElementById('destacada').checked;
+  const archivo = document.getElementById('imagenArchivo').files[0];
+
+  if (!titulo || !anio || !tecnica) {
+    mostrarMsg('Completá título, año y técnica', true);
+    return;
+  }
+
+  const btnGuardar = document.querySelector('#obraForm button[type="submit"]');
+  if (btnGuardar) { btnGuardar.disabled = true; btnGuardar.textContent = 'Guardando...'; }
+
+  try {
+    let imagen_url = null;
+
+    // Subir imagen si se seleccionó una
+    if (archivo) {
+      if (!archivo.type.startsWith('image/')) {
+        mostrarMsg('El archivo debe ser una imagen', true);
+        return;
+      }
+      if (archivo.size > 5 * 1024 * 1024) {
+        mostrarMsg('La imagen no debe superar los 5MB', true);
+        return;
+      }
+
+      const extension = archivo.name.split('.').pop();
+      const nombreArchivo = `obra_${Date.now()}.${extension}`;
+      imagen_url = await subirImagen(archivo, nombreArchivo);
+    }
+
+    const datosObra = { titulo, anio, tecnica, dimensiones, descripcion, destacada };
+    if (imagen_url) datosObra.imagen_url = imagen_url;
+
+    if (id) {
+      await actualizarObra(id, datosObra);
+      mostrarMsg('✓ Obra actualizada');
+    } else {
+      await crearObra(datosObra);
+      mostrarMsg('✓ Obra agregada correctamente');
+    }
+
+    limpiarForm();
+    await renderTabla();
+
+  } catch (err) {
+    console.error('Error guardando obra:', err);
+    mostrarMsg('Error al guardar la obra. Verificá la conexión.', true);
+  } finally {
+    if (btnGuardar) { btnGuardar.disabled = false; btnGuardar.textContent = '💾 Guardar obra'; }
+  }
+}
+
+// ============================================================
+// MENSAJES DE CONTACTO
+// ============================================================
+
+async function cargarMensajes() {
+  const tbody = document.getElementById('tablaMensajes');
+  if (!tbody) return;
+
+  tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:1rem;">Cargando mensajes...</td></tr>';
+
+  try {
+    const mensajes = await obtenerMensajes();
+
+    if (!mensajes || mensajes.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="empty-row">No hay mensajes guardados</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = mensajes.map(m => `
+      <tr>
+        <td>${new Date(m.created_at).toLocaleDateString('es-PY')}</td>
+        <td>${m.nombre || '-'}</td>
+        <td>${m.email || '-'}</td>
+        <td>${m.asunto || '-'}</td>
+        <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis;">${m.mensaje || '-'}</td>
+      </tr>
+    `).join('');
+
+  } catch (err) {
+    console.error('Error cargando mensajes:', err);
+    tbody.innerHTML = '<tr><td colspan="5" style="color:red; text-align:center; padding:1rem;">Error al cargar mensajes.</td></tr>';
+  }
+}
+
+// ============================================================
+// UTILIDADES
+// ============================================================
+
+function limpiarForm() {
+  document.getElementById('obraId').value = '';
+  document.getElementById('titulo').value = '';
+  document.getElementById('anio').value = '';
+  document.getElementById('tecnica').value = '';
+  document.getElementById('dimensiones').value = '';
+  document.getElementById('descripcion').value = '';
+  document.getElementById('imagenArchivo').value = '';
+  document.getElementById('destacada').checked = false;
+  document.getElementById('formTitle').innerHTML = '➕ Agregar nueva obra';
+
+  const preview = document.getElementById('vistaPrevia');
+  if (preview) preview.style.display = 'none';
+  const previewImg = document.getElementById('previewImg');
+  if (previewImg) previewImg.src = '';
+  const fileName = document.getElementById('fileName');
+  if (fileName) fileName.innerText = 'Ningún archivo seleccionado';
+}
+
+function mostrarMsg(texto, error = false) {
+  let toast = document.getElementById('toastMsg');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toastMsg';
+    toast.style.cssText = 'position:fixed;bottom:2rem;right:2rem;background:#1a1a1a;color:white;padding:0.7rem 1.2rem;border-radius:4px;opacity:0;transition:0.3s;z-index:1000;';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = texto;
+  toast.style.background = error ? '#c0392b' : '#2c3e50';
+  toast.style.opacity = '1';
+  setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Preview imagen
   const imagenInput = document.getElementById('imagenArchivo');
   if (imagenInput) {
-    imagenInput.addEventListener('change', function(e) {
+    imagenInput.addEventListener('change', function (e) {
       const file = e.target.files[0];
       const fileNameSpan = document.getElementById('fileName');
       const previewDiv = document.getElementById('vistaPrevia');
@@ -228,38 +298,54 @@ document.addEventListener('DOMContentLoaded', function() {
       if (file) {
         if (fileNameSpan) fileNameSpan.innerText = file.name;
         const reader = new FileReader();
-        reader.onload = function(event) {
-          if (previewImg) previewImg.src = event.target.result;
+        reader.onload = ev => {
+          if (previewImg) previewImg.src = ev.target.result;
           if (previewDiv) previewDiv.style.display = 'block';
         };
         reader.readAsDataURL(file);
       } else {
         if (fileNameSpan) fileNameSpan.innerText = 'Ningún archivo seleccionado';
         if (previewDiv) previewDiv.style.display = 'none';
-        if (previewImg) previewImg.src = '';
       }
     });
   }
-});
 
-if (document.getElementById('loginPanel') && sessionStorage.getItem('admin_logueado') === 'true') {
-  document.getElementById('loginPanel').style.display = 'none';
-  if (document.getElementById('adminPanel')) {
-    document.getElementById('adminPanel').style.display = 'block';
-    renderTabla();
-    actualizarStats();
+  // Borrar todos los mensajes
+  const borrarMensajesBtn = document.getElementById('borrarMensajesBtn');
+  if (borrarMensajesBtn) {
+    borrarMensajesBtn.addEventListener('click', async () => {
+      if (!confirm('¿Borrar todos los mensajes permanentemente?')) return;
+      try {
+        await eliminarTodosMensajes();
+        mostrarMsg('✓ Mensajes eliminados');
+        await cargarMensajes();
+      } catch (err) {
+        mostrarMsg('Error al eliminar mensajes', true);
+      }
+    });
   }
-}
 
-if (document.getElementById('loginForm')) {
-  document.getElementById('loginForm').addEventListener('submit', login);
-}
-if (document.getElementById('obraForm')) {
-  document.getElementById('obraForm').addEventListener('submit', guardarObra);
-}
-if (document.getElementById('logoutBtn')) {
-  document.getElementById('logoutBtn').addEventListener('click', logout);
-}
-if (document.getElementById('cancelarBtn')) {
-  document.getElementById('cancelarBtn').addEventListener('click', limpiarForm);
-}
+  // Eventos del formulario
+  if (document.getElementById('loginForm')) {
+    document.getElementById('loginForm').addEventListener('submit', login);
+  }
+  if (document.getElementById('obraForm')) {
+    document.getElementById('obraForm').addEventListener('submit', guardarObra);
+  }
+  if (document.getElementById('logoutBtn')) {
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+  }
+  if (document.getElementById('cancelarBtn')) {
+    document.getElementById('cancelarBtn').addEventListener('click', limpiarForm);
+  }
+
+  // Auto-login si ya estaba logueado
+  if (sessionStorage.getItem('admin_logueado') === 'true') {
+    document.getElementById('loginPanel').style.display = 'none';
+    const panel = document.getElementById('adminPanel');
+    if (panel) {
+      panel.style.display = 'block';
+      cargarPanel();
+    }
+  }
+});
