@@ -1,67 +1,54 @@
-// ========== js/index.js (VERSIÓN CON IMÁGENES BASE64) ==========
-const STORAGE_KEY = 'mis_obras';
+// ========== js/index.js - SUPABASE VERSION ==========
 
-function getObras() {
-  let data = localStorage.getItem(STORAGE_KEY);
-  if (data) {
-    return JSON.parse(data);
-  }
-  return [];
-}
-
-function cargarDestacadas() {
-  let grid = document.getElementById('destacadas-grid');
+async function cargarDestacadas() {
+  const grid = document.getElementById('destacadas-grid');
   if (!grid) return;
-  
-  let obras = getObras();
-  let destacadas = obras.filter(o => o.destacada === true);
-  
-  if (destacadas.length === 0) {
-    destacadas = obras.slice(0, 2);
-  }
-  
-  if (destacadas.length === 0) {
-    grid.innerHTML = `
-      <div style="text-align:center; width:100%; padding: 2rem;">
-        <p class="text-muted" style="font-style: italic;">Próximamente nuevas obras...</p>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem;">
-          <a href="admin.html" style="color: var(--ocre);">👉 Accede al panel admin</a> para comenzar a cargar obras.
-        </p>
-      </div>
-    `;
-    return;
-  }
-  
-  let mostrar = destacadas.slice(0, 2);
-  
-  grid.innerHTML = mostrar.map(obra => {
-    let imagenSrc = '';
-    if (obra.imagenBase64 && obra.imagenBase64.startsWith('data:image')) {
-      imagenSrc = obra.imagenBase64;
-    } else {
-      imagenSrc = `imagenes/${obra.imagen || 'default.jpg'}`;
+
+  grid.innerHTML = '<p class="text-muted" style="text-align:center; width:100%;">Cargando obras...</p>';
+
+  try {
+    let destacadas = await obtenerObrasDestacadas();
+
+    // Si no hay destacadas, mostrar las 2 más recientes
+    if (!destacadas || destacadas.length === 0) {
+      const todas = await obtenerObras();
+      destacadas = todas.slice(0, 2);
     }
-    
-    return `
-      <div class="dest-card ${mostrar.length === 1 ? 'dest-card--large' : ''}" onclick="window.location.href='galeria.html'">
-        <img src="${imagenSrc}" class="dest-card__img" onerror="this.style.background='#e8e4de'">
-        <div class="dest-card__info">
-          <h3>${obra.titulo}</h3>
-          <p>${obra.anio} · ${obra.tecnica}</p>
+
+    if (!destacadas || destacadas.length === 0) {
+      grid.innerHTML = `
+        <div style="text-align:center; width:100%; padding: 2rem;">
+          <p class="text-muted" style="font-style: italic;">Próximamente nuevas obras...</p>
         </div>
-      </div>
-    `;
-  }).join('');
+      `;
+      return;
+    }
+
+    const mostrar = destacadas.slice(0, 2);
+
+    grid.innerHTML = mostrar.map(obra => {
+      const imagenSrc = obra.imagen_url || 'imagenes/default.jpg';
+      return `
+        <div class="dest-card ${mostrar.length === 1 ? 'dest-card--large' : ''}"
+             onclick="window.location.href='galeria.html'">
+          <img src="${imagenSrc}" class="dest-card__img" alt="${obra.titulo}" loading="lazy"
+               onerror="this.style.background='#e8e4de'; this.style.minHeight='200px';">
+          <div class="dest-card__info">
+            <h3>${obra.titulo}</h3>
+            <p>${obra.anio} · ${obra.tecnica}</p>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+  } catch (err) {
+    console.error('Error cargando destacadas:', err);
+    grid.innerHTML = '<p class="text-muted" style="text-align:center; width:100%;">Error al cargar las obras.</p>';
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   cargarDestacadas();
-});
-
-window.addEventListener('storage', (e) => {
-  if (e.key === STORAGE_KEY) {
-    cargarDestacadas();
-  }
 });
 
 window.cargarDestacadas = cargarDestacadas;
