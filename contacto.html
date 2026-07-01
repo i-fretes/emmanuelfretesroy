@@ -4,24 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto — Emmanuel Fretes Roy</title>
-  <!-- CSS comunes -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/componentes.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <!-- CSS específico de contacto -->
   <link rel="stylesheet" href="css/contacto.css">
 </head>
 <body>
 
   <nav class="nav">
     <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
-    
     <button class="nav__toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
-
     <ul class="nav__links" id="nav-links">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="galeria.html">Galería</a></li>
@@ -44,7 +38,7 @@
     <section class="section">
       <div class="container">
         <div class="contacto-layout">
-          
+
           <div class="contacto-info">
             <h2>Conectemos</h2>
             <p>Si estás interesado en adquirir una obra, colaborar en una exposición, o simplemente conocer más sobre el trabajo de Emmanuel, no dudes en escribir.</p>
@@ -55,7 +49,7 @@
                 <div class="contacto-icono">📧</div>
                 <div class="contacto-texto">
                   <strong>Email</strong>
-                  <a href="mailto:emmanuel@fretesroy.com">emmanuelfretesroy@hotmail.com</a>
+                  <a href="mailto:emmanuelfretesroy@hotmail.com">emmanuelfretesroy@hotmail.com</a>
                 </div>
               </div>
 
@@ -79,7 +73,7 @@
                 <div class="contacto-icono">🎨</div>
                 <div class="contacto-texto">
                   <strong>Instagram</strong>
-                  <a href="https://www.instagram.com/emmanuelfretes_/?hl=es"> @emmanuelfretes_</a>
+                  <a href="https://www.instagram.com/emmanuelfretes_/" target="_blank">@emmanuelfretes_</a>
                 </div>
               </div>
             </div>
@@ -87,18 +81,15 @@
 
           <div class="contacto-formulario">
             <h3>Enviar un mensaje</h3>
-            
             <form id="contactoForm" novalidate>
               <div class="form-group">
                 <label for="nombre">Nombre completo *</label>
                 <input type="text" id="nombre" placeholder="Tu nombre" required>
               </div>
-
               <div class="form-group">
                 <label for="email">Correo electrónico *</label>
                 <input type="email" id="email" placeholder="tu@email.com" required>
               </div>
-
               <div class="form-group">
                 <label for="asunto">Motivo de consulta</label>
                 <select id="asunto">
@@ -109,14 +100,11 @@
                   <option value="otro">Otro</option>
                 </select>
               </div>
-
               <div class="form-group">
                 <label for="mensaje">Mensaje *</label>
                 <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
               </div>
-
               <button type="submit" class="btn btn--ocre btn-enviar">Enviar mensaje</button>
-              
               <div id="formMensaje" class="form-mensaje"></div>
             </form>
           </div>
@@ -133,7 +121,7 @@
         <p class="footer__copy">© 2024 · Todos los derechos reservados</p>
       </div>
       <nav class="footer__social">
-        <a href="#">Instagram</a>
+        <a href="https://www.instagram.com/emmanuelfretes_/" target="_blank">Instagram</a>
         <a href="contacto.html">Contacto</a>
       </nav>
     </div>
