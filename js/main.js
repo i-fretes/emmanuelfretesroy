@@ -1,40 +1,43 @@
-// js/main.js
-// ============================================================
-// MAIN - Funcionalidades globales (menú móvil)
-// ============================================================
+// js/main.js — navbar global
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Menú hamburguesa
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('nav-links');
+document.addEventListener('DOMContentLoaded', function () {
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', function(e) {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (menuToggle && navLinks) {
+
+    // Abrir / cerrar al tocar el botón
+    menuToggle.addEventListener('click', function (e) {
       e.stopPropagation();
-      this.classList.toggle('active');
-      menu.classList.toggle('active');
+      const abierto = navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active', abierto);
+      // Bloquear scroll del body cuando el menú está abierto
+      document.body.style.overflow = abierto ? 'hidden' : '';
     });
 
-    // Cerrar menú al hacer clic en un enlace
-    menu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
+    // Cerrar al tocar cualquier enlace
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
       });
     });
 
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', function(e) {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
+    // Cerrar al tocar fuera del menú
+    document.addEventListener('click', function (e) {
+      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
   }
 
   // Marcar enlace activo
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav__links a').forEach(function(link) {
+  document.querySelectorAll('.nav__links a').forEach(function (link) {
     if (link.getAttribute('href') === currentPage) {
       link.classList.add('activo');
     }
