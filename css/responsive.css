@@ -1,64 +1,202 @@
-/* --- 1. Ocultar menú en móviles por defecto --- */
+/* ============================================================
+   RESPONSIVE GLOBAL
+   ============================================================ */
+
+/* ── Tablets y celulares (≤ 768px) ── */
 @media (max-width: 768px) {
-    /* Asegurar que el logo y el botón estén alineados */
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-    }
 
-    /* Esconder la lista de enlaces hasta que se haga clic */
-    .nav__links {
-        display: none; 
-        position: absolute;
-        top: 60px; /* Ajusta según la altura de tu barra de navegación */
-        left: 0;
-        width: 100%;
-        background-color: #ffffff; /* Ajusta según el color de fondo de tu sitio */
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
-        text-align: center;
-    }
+  /* Contenedor */
+  .container {
+    padding: 0 1.5rem;
+  }
 
-    /* Esta clase es la que tu JS (main.js) activa */
-    .nav__links.active {
-        display: flex;
-    }
+  /* Tipografía */
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
 
-    /* Estilo de los enlaces en el menú móvil para que no se vean "feos" */
-    .nav__links li {
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-    }
+  /* Secciones */
+  .section {
+    padding: 2.5rem 0;
+  }
 
-    .nav__links li a {
-        font-size: 1.2rem;
-        text-decoration: none;
-        color: #333;
-    }
+  /* ── NAVBAR ── */
+  .nav__toggle {
+    display: flex !important;
+  }
 
-    /* Mostrar botón de hamburguesa solo en móvil */
-    .nav__toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
+  /* Menú cerrado por defecto */
+  .nav__links {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 75% !important;
+    max-width: 320px !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding: 80px 30px 30px !important;
+    margin: 0 !important;
+    list-style: none !important;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.2) !important;
+    transition: right 0.3s ease-in-out !important;
+    z-index: 1000 !important;
+    overflow-y: auto !important;
+    display: flex !important;
+  }
+
+  /* Menú abierto — clase .active aplicada por main.js */
+  .nav__links.active {
+    right: 0 !important;
+  }
+
+  .nav__links li {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav__links a {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .nav__links a:hover,
+  .nav__links a.activo {
+    color: var(--ocre) !important;
+  }
+
+  .btn-admin {
+    display: inline-block !important;
+    margin-top: 15px !important;
+    padding: 10px 20px !important;
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    text-align: center !important;
+    border-bottom: none !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 60vh;
+    padding: 2rem;
+  }
+
+  .hero__titulo { font-size: 2rem; }
+  .hero__subtitulo { font-size: 0.9rem; }
+
+  /* ── INICIO — obras destacadas ── */
+  .destacadas-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .dest-card__img { height: 220px; }
+  .dest-card--large .dest-card__img { height: 250px; }
+
+  /* ── GALERÍA ── */
+  .galeria-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .obra-card__img { height: 220px !important; }
+
+  .filtros-wrap { gap: 0.5rem; }
+  .filtro-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.65rem;
+  }
+
+  /* ── MODAL ── */
+  .modal__layout { grid-template-columns: 1fr; }
+  .modal__img { min-height: 200px; }
+  .modal__datos { padding: 1.5rem; }
+  .modal__datos h2 { font-size: 1.3rem; }
+
+  /* ── SOBRE ── */
+  .sobre-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .sobre-foto img {
+    max-width: 280px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .expo-item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .expo-anio { min-width: auto; }
+
+  /* ── CONTACTO ── */
+  .contacto-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contacto-item { margin-bottom: 1rem; }
+
+  /* ── ADMIN ── */
+  .admin-container { padding: 1rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .admin-header { flex-direction: column; text-align: center; }
+  .form-buttons { flex-direction: column; }
+  .form-buttons .btn { width: 100%; justify-content: center; }
+  .table-header { flex-direction: column; text-align: center; }
+
+  /* Ocultar columna técnica en tabla admin */
+  .obras-table th:nth-child(4),
+  .obras-table td:nth-child(4) { display: none; }
+
+  /* ── FOOTER ── */
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__social a { margin: 0 0.75rem; }
 }
 
-/* --- 2. Asegurar vista de escritorio --- */
-@media (min-width: 769px) {
-    .nav__toggle {
-        display: none; /* Ocultar hamburguesa en escritorio */
-    }
-    .nav__links {
-        display: flex !important;
-        flex-direction: row;
-        gap: 20px;
-    }
+/* ── Celulares pequeños (≤ 480px) ── */
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+
+  .btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.65rem;
+  }
+
+  .hero__titulo { font-size: 1.6rem; }
+
+  .page-header {
+    padding: 80px 0 30px;
+  }
+
+  .page-header h1 { font-size: 1.8rem; }
+
+  .filtro-btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.6rem;
+  }
+
+  .obra-card__info h3 { font-size: 1rem; }
+  .stat-number { font-size: 1.8rem; }
 }
