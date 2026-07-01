@@ -13,13 +13,9 @@
 
 <nav class="nav">
   <a href="index.html" class="nav__logo">Emmanuel <span>Fretes Roy</span></a>
-  
   <button class="nav__toggle" id="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
-
   <ul class="nav__links" id="nav-links">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="galeria.html">Galería</a></li>
@@ -45,7 +41,6 @@
           <button type="submit" class="btn btn--ocre btn-full">Ingresar</button>
           <p id="loginError" class="error-msg"></p>
         </form>
-        <p class="demo-pass">Demo: <strong>artista123</strong></p>
       </div>
     </div>
   </div>
@@ -53,8 +48,7 @@
   <!-- PANEL ADMIN -->
   <div id="adminPanel" style="display:none;">
     <div class="admin-container">
-      
-      <!-- Header -->
+
       <div class="admin-header">
         <div class="header-title">
           <span class="eyebrow">Panel de control</span>
@@ -66,7 +60,6 @@
         </button>
       </div>
 
-      <!-- Stats Cards -->
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-icon">🖼️</div>
@@ -85,16 +78,15 @@
         </div>
       </div>
 
-      <!-- Formulario -->
       <div class="form-card">
         <div class="form-header">
           <h3 id="formTitle">➕ Agregar nueva obra</h3>
           <p class="text-muted">Completá los datos de la obra</p>
         </div>
-        
+
         <form id="obraForm">
           <input type="hidden" id="obraId">
-          
+
           <div class="form-row">
             <div class="form-group">
               <label>Título de la obra</label>
@@ -105,7 +97,7 @@
               <input type="number" id="anio" placeholder="2024" required>
             </div>
           </div>
-          
+
           <div class="form-row">
             <div class="form-group">
               <label>Técnica</label>
@@ -116,12 +108,12 @@
               <input type="text" id="dimensiones" placeholder="Ej: 80 × 100 cm">
             </div>
           </div>
-          
+
           <div class="form-group">
             <label>Descripción</label>
             <textarea id="descripcion" rows="3" placeholder="Breve descripción de la obra..."></textarea>
           </div>
-          
+
           <div class="form-row">
             <div class="form-group">
               <label>Subir imagen</label>
@@ -139,12 +131,12 @@
               </div>
             </div>
           </div>
-          
+
           <div id="vistaPrevia" class="preview-container" style="display:none;">
             <p>Vista previa:</p>
-            <img id="previewImg">
+            <img id="previewImg" alt="Vista previa">
           </div>
-          
+
           <div class="form-buttons">
             <button type="submit" class="btn btn--ocre">
               <span>💾</span> Guardar obra
@@ -162,7 +154,6 @@
           <h3>📋 Obras registradas</h3>
           <span class="table-count" id="obrasCount">0 obras</span>
         </div>
-        
         <div class="table-responsive">
           <table class="obras-table">
             <thead>
@@ -181,13 +172,16 @@
           </table>
         </div>
       </div>
-      
+
+      <!-- Mensajes -->
       <div class="table-container" style="margin-top: 2rem;">
         <div class="table-header">
           <h3>📬 Mensajes de contacto</h3>
-          <button id="borrarMensajesBtn" class="btn-small btn-delete" style="background:#c0392b; color:white;">Borrar todos</button>
+          <button id="borrarMensajesBtn" class="btn-small btn-delete"
+                  style="background:#c0392b; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">
+            Borrar todos
+          </button>
         </div>
-        
         <div class="table-responsive">
           <table class="obras-table">
             <thead>
@@ -205,7 +199,7 @@
           </table>
         </div>
       </div>
-      
+
     </div>
   </div>
 </main>
